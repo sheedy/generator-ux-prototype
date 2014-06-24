@@ -1,0 +1,18 @@
+{
+  "name": "<%= projectSlug %>--ux-prototype",
+  "version": "0.0.0",
+  "author": "<% if (author) { %><%= author %><% } %><% if (email) { %> <%= email %><% } %>",
+  "description": "<% if (description) { %><%= description %><% } %>",
+  "repository": {},
+  "main": "Gruntfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "assemble": "0.4.37",
+    "connect-livereload": "0.4.0",
+    "grunt": "0.4.5",
+    "time-grunt": "0.3.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
