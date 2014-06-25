@@ -35,30 +35,16 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
 
     var prompts = [
       {
-        type: 'confirm',
-        name: 'includeNormalize',
-        message: 'Would you like to include normalize.css?',
-        default: true
-      },
-      {
-        // OR
-        type: 'checkbox',
-        name: 'projectType',
-        message: 'Would you like to include a base folder structure?',
-        choices: ['North', 'Atomic Design', 'None'],
-        default: 'North'
-      },
-      {
-        type: 'confirm',
-        name: 'includeJQuery',
-        message: 'Would you like to include jQuery?',
-        default: true
-      },
-      {
         type    : "string",
         name    : "projectName",
         message : "What would you like to call your project?",
         default : this.appname // Default to current folder name
+      },
+      {
+        type: 'string',
+        name: 'description',
+        message: 'Description',
+        default: ""
       },
       {
         type: 'string',
@@ -73,22 +59,73 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
         default: ""
       },
       {
-        type: 'string',
-        name: 'description',
-        message: 'Description',
-        default: ""
+        type: 'checkbox',
+        name: 'features',
+        message: 'Select which packages you want to install (up/down keys and spacebar)',
+        choices: [
+          {
+            name: 'Modernizr',
+            value: 'incModernizr',
+            checked: true
+          },
+          {
+            name: 'Modular Scale',
+            value: 'incModularScale',
+            checked: false
+          },
+          {
+            name: 'animate.css',
+            value: 'incAnimateCss',
+            checked: false
+          },
+          {
+            name: 'FitText.js',
+            value: 'incFitText',
+            checked: false
+          },
+          {
+            name: 'Lettering.js',
+            value: 'incLetteringJs',
+            checked: false
+          },
+          {
+            name: 'Neat Grid (Bourbon)',
+            value: 'incNeat',
+            checked: false
+          },
+          {
+            name: 'Normalize.scss',
+            value: 'incNormalizeScss',
+            checked: false
+          }
+        ],
+        default: false
       }
     ];
 
     this.prompt(prompts, function (props) {
-      this.includeNormalize   = props.includeNormalize;
-      this.includeJQuery      = props.includeJQuery;
-      this.projectName        = props.projectName;
-      this.author             = props.author;
-      this.email              = props.email;
-      this.description        = props.description;
 
-      this.projectSlug        = _s.slugify(this.projectName);
+      this.projectName              = props.projectName;
+      this.projectSlug              = _s.slugify(this.projectName);
+      this.description              = props.description;
+      this.author                   = props.author;
+      this.email                    = props.email;
+
+      // Features (Bower Components)
+      var features                  = props.features;
+
+      function hasFeature (feat) {
+        return features.indexOf(feat) !== -1;
+      }
+
+      this.incModernizr             = hasFeature('incModernizr');
+      this.incModularScale          = hasFeature('incModularScale');
+      this.incNormalizeScss         = hasFeature('incNormalizeScss');
+      this.incAnimateCss            = hasFeature('incAnimateCss');
+      this.incFitText               = hasFeature('incFitText');
+      this.incLetteringJs           = hasFeature('incLetteringJs');
+      this.incNeat                  = hasFeature('incNeat');
+
 
       done();
 
@@ -104,12 +141,16 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
     this.copy('_Gruntfile.js', 'Gruntfile.js');
     this.copy('bowerrc', '.bowerrc');
     this.copy('_bower.json', 'bower.json');
+
+    this.directory('tasks', 'tasks');
+    this.directory('src', 'src');
   },
 
   projectfiles: function () {
     this.copy('editorconfig', '.editorconfig');
     this.copy('jshintrc', '.jshintrc');
     this.copy('gitignore', '.gitignore');
+    this.copy('ruby-version', '.ruby-version');
   }
 });
 

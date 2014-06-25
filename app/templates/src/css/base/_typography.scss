@@ -1,0 +1,65 @@
+%hN {
+  margin: 0;
+  font-weight: $font-weight;
+  // margin: 0 0 ($base-line-height * 1) + rem 0;
+}
+
+h1,
+.h1 {
+  @extend %hN;
+  font-size: ms(5);
+}
+
+h2,
+.h2 {
+  @extend %hN;
+  font-size: ms(4);
+}
+
+h3,
+.h3 {
+  @extend %hN;
+  font-size: ms(3);
+}
+
+h4,
+.h4 {
+  @extend %hN;
+  font-size: ms(2);
+}
+
+h5,
+.h5 {
+  @extend %hN;
+  font-size: ms(1);
+}
+
+h6,
+.h6 {
+  @extend %hN;
+  font-size: ms(-1);
+}
+
+p{
+  margin: 0 0 #{$base-line-height}rem 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/*
+ * Addresses font-family inconsistency between 'textarea' and other form elements.
+ */
+
+// html,
+button,
+input,
+select,
+textarea {
+  font-family: $font-family;
+}
+
+.text-centred {
+  text-align: center;
+}

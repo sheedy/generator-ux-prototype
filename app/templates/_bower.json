@@ -1,24 +1,17 @@
 {
   "name": "<%= projectSlug %>--ux-prototype",
   "version": "0.0.0",
-  "dependencies": {
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    <% if (includeJQuery) { %>"jquery": "~1.9.0",<% } %>
-    "animate.css": "~2.1.1",
-    "modular-scale": "~2.0.4",
-    "fittext": "*",
-    "letteringjs": "~0.6.1",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {<% if (incAnimateCss) { %>
+    "animate.css": "~2.1.1",<% } %><% if (incModularScale) { %>
+    "modular-scale": "~2.0.4",<% } %><% if (incFitText) { %>
+    "fittext": "*",<% } %><% if (incLetteringJs) { %>
+    "letteringjs": "~0.6.1",<% } %><% if (incNeat) { %>
     "neat": "~1.6.0",
-    "bourbon": "~3.1.8",
-    "normalize-scss": "~3.0.1",
-    "modular-scale": "~2.0.5"
+    "bourbon": "~3.1.8",<% } %><% if (incNormalizeScss) { %>
+    "normalize-scss": "~3.0.1",<% } %>
+    "jquery": "~1.9.0"
   }
 }
 

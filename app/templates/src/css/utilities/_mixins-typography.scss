@@ -1,0 +1,106 @@
+@mixin vrythm($size, $margin-adjust: $base-line-height) {
+  // Scale is an integer between 0 and x and used with modular-scale
+  font-size: $size + px;
+  font-size: calc-rem($size);
+  line-height: line-height-calc($size, $margin-adjust);
+}
+
+@mixin ms-and-vrythm($scale, $margin-adjust: $base-line-height) {
+  // Scale is an integer between 0 and x and used with modular-scale
+  font-size: ms($scale);
+  line-height: ms-line-height-calc($scale, $margin-adjust);
+}
+
+//http://trentwalton.com/2011/09/07/css-hyphenation
+@mixin css-hyphens($val) {
+  // Accepted values: [ none | manual | auto ]
+  -webkit-hyphens: $val; // Safari 5.1 thru 6, iOS 4.2 thru 6
+  -moz-hyphens: $val; // Firefox 16 thru 20
+  -ms-hyphens: $val; // IE10
+  -o-hyphens: $val; // PRESTO...haha LOL
+  hyphens: $val; // W3C standard
+}
+
+// $Mixin $Type-Scale
+// -------------------------------------//
+// provides a pixel fallback if you decide
+// to use 'rems' as a unit over ems.
+
+@mixin type-scale($scale, $base, $value, $measure:"") {
+  // If 'rem' is used as a $value then provide a px fallback.
+  // @debug "vars " + $scale + " , " + $base + " , " + $value + " , ";
+  @if $value == rem {
+    font-size: $scale#{px};
+  }
+  font-size: context-calc($scale, $base, $value);
+  // @if $measure != "" {
+  //   // margin-bottom: measure-margin($scale, $measure, $value);
+  //   margin-bottom: 0;
+  // }
+}
+
+@mixin font-smooth($type) {
+  -webkit-font-smoothing: $type;
+}
+
+// Rem font-sizing
+//------------------------------------------------------------------------------
+
+// This function will take the desired pixel result and provide a pixel fallback
+// version as well as rem version.  Do not include "px" units as argument.
+
+@mixin font-size($size) {
+  font-size: $size + px;
+  font-size: calc-rem($size);
+}
+
+// ----------------------------------------------------------------------------
+// Font Feature Settings mixin
+// ----------------------------------------------------------------------------
+// Partly from https://github.com/bitmanic/font-feature-settings
+
+@mixin font-feature-settings($feature-list: false) {
+  // Only proceed if a list of arguments was passed
+  @if $feature-list {
+    // Create an empty list for the standard syntax
+    $standard: ();
+    // Create an empty list for the new Mozilla syntax
+    $new-moz: ();
+    // Create an empty list for the old Mozilla syntax
+    $old-moz: ();
+    // Add each listed feature to the standard, new and old Mozilla values
+    @each $feature in $feature-list {
+      $standard: append($standard, '#{$feature}', comma);
+      $new-moz: append($new-moz, '#{$feature}' 1, comma);
+      $old-moz: append($old-moz, '#{$feature}=1', comma);
+    }
+    // Finally, print out the prefixed and non-prefixed code for all of the listed features
+    // Syntax from http://stackoverflow.com/questions/15160897/font-feature-settings-what-is-the-correct-syntax
+    -webkit-font-feature-settings: $standard; // No variation
+       -moz-font-feature-settings: $old-moz; // Firefox 4.0 to 14.0
+       -moz-font-feature-settings: $standard; // Firefox 15.0 onwards
+       -moz-font-feature-settings: $new-moz; // Firefox 15.0 onwards explicitly set feature values
+            font-feature-settings: $standard; // No variation
+  }
+}
+
+// First attempt at font-feature-settings mixin
+// @mixin font-feature-settings($features...) {
+//  // Syntax from http://stackoverflow.com/questions/15160897/font-feature-settings-what-is-the-correct-syntax
+//  @debug "$features = " + $features;
+//  $settings-length: length($features) - 1;
+//  // @debug list-separator($features);
+//  $last-val: nth($features, $settings-length + 1);
+//  $i: 0;
+
+//  @while $i < $settings-length {
+//    @each $feature in $features {
+//      @if ($feature == $last-val) {
+//        @debug $feature;
+//      } @else {
+//        @debug $feature + ", ";
+//        $i: $i + 1;
+//      }
+//    }
+//  }
+// }

@@ -1,0 +1,23 @@
+{
+  "key": "value",
+
+  "contact": {
+   "phone": {
+      "mobile": "value",
+      "home": ""
+    },
+    "email": {
+      "personal": "",
+      "work": ""
+    },
+    "address": ""
+  },
+
+  "pages": {
+    "home" : {
+      "name": "home",
+      "url": ""
+    }
+  }
+
+}

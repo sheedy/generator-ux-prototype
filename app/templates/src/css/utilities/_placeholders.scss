@@ -1,0 +1,172 @@
+%base-wf-style {
+  width: 100%;
+  background: lighten($grey, 60%);
+  color: $header-mid;
+  text-align: center;
+}
+
+// Enable hardware acceleration on an animated element by using the “null transform hack”.
+%hardware-accelarate {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  // -webkit-backface-visibility: hidden;
+  // perspective: 1000;
+}
+
+%wireframe-base {
+  background-color: $light-grey;
+  border: 1px solid $black;
+  display: block;
+}
+
+// Insert quotation marks before and after
+%quotation-marks {
+  &:before {
+    content: "“";
+  }
+
+  &:after {
+    content: "”";
+  }
+}
+
+// Center an element vertically
+// Apply -webkit-transform-style: preserve-3d; to the parent element to avoid blurry text
+%vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+// center any element within its parent.
+// Requires width or max-width to be set.
+%center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// An easy way to truncate text with an ellipsis.
+// Requires the element to be block or inline-block.
+%text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Clearfixes
+// https://gist.github.com/GeneLocklin/2505550
+
+// http://nicolasgallagher.com/micro-clearfix-hack/
+
+%cf-micro {
+  *zoom:1;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// http://www.positioniseverything.net/easyclearing.html
+
+%cf-inc {
+  &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  *zoom: 1;
+}
+
+// http://perishablepress.com/css-hackz-series-clearing-floats-with-the-clearfix-hack/
+
+%cf-classic {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: '.';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    font-size: 0;
+    line-height: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// http://www.positioniseverything.net/easyclearing.html
+
+%cf-position {
+  display: inline-block;
+
+  &:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  display: block;
+}
+
+// http://perishablepress.com/new-clearfix-hack/
+
+%cf-press {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+
+  * html & {
+    zoom: 1;
+  }
+
+  *:first-child+html & {
+    zoom: 1;
+  }
+}
+
+// http://www.quirksmode.org/css/clearing.html
+
+%cf-quirk {
+  overflow: hidden;
+  display: inline-block;
+  display: block;
+}
+
+// http://www.quirksmode.org/css/clearing.html
+
+%cf-underscore {
+  overflow: hidden;
+  _overflow: visible;
+  _zoom: 1;
+}
+
+// @mixin clear($clear) {
+// // left | right | both | none | inherit
+//   clear: $clear;
+// }
