@@ -7,7 +7,6 @@ var chalk = require('chalk');
 var _s = require('underscore.string');
 var sh = require('execSync');
 
-
 var UxPrototypeGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.pkg = require('../package.json');
@@ -141,9 +140,11 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
     this.copy('_Gruntfile.js', 'Gruntfile.js');
     this.copy('bowerrc', '.bowerrc');
     this.copy('_bower.json', 'bower.json');
+    this.copy('_README.md', 'README.md');
 
     this.directory('tasks', 'tasks');
     this.directory('src', 'src');
+    this.directory('config', 'config');
   },
 
   projectfiles: function () {
@@ -151,6 +152,7 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
     this.copy('jshintrc', '.jshintrc');
     this.copy('gitignore', '.gitignore');
     this.copy('ruby-version', '.ruby-version');
+    this.copy('scss-lint.yml', '.scss-lint.yml');
   }
 });
 

@@ -9,6 +9,11 @@
 // 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
 //    http://www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
 
+// Box sizing handled by neat
+// * {
+//   @include box-sizing(border-box);
+// }
+
 html {
   overflow-y:               scroll;
   min-height:               100%;
@@ -22,41 +27,40 @@ html {
   -webkit-text-size-adjust: $font-base-size-percentage; // 2
   -ms-text-size-adjust:     $font-base-size-percentage; // 2
 
-  text-rendering:           optimizeLegibility; // voodoo to enable ligatures and kerning
-  // Kerning for OTF http://blog.typekit.com/2014/02/05/kerning-on-the-web/
-  font-kerning:             normal;
-  @include font-feature-settings(kern);
   @include font-smooth(antialiased);
 }
 
-// Box sizing handled by neat
-// * {
-//   @include box-sizing(border-box);
-// }
-
 body {
-  background-color: $bg-color;
+  // normal: Indicates that lines may only break at normal word break points.
+  // break-word : Indicates that normally unbreakable words may be broken at ...
+  // arbitrary points if there are no otherwise acceptable break points in the line.
+  @extend %breakword;
 
-  // Used in conjunction with the %vertical-align placeholder
-  // -webkit-transform-style: preserve-3d; /* Chrome, Safari, Opera */
-  // transform-style: preserve-3d;
-
+  // margin: 0;
+  // padding: 0;
+  background-color: lighten($bg-color, 7%);
+  // Ala Trent Walton
   @include css-hyphens(auto);
-  padding-bottom: 40px;
 }
 
 hr {
-  background: $border-color;
+  // background: $border-color;
   border: 0;
-  height: 1px;
-  margin: 75px 0;
+  // height: 1px;
+  margin: $base-line-height + rem 0;
 }
 
-h1, h2, h3, h4, h5, h6, hgroup,
-ul, ol, dd,
-p, figure,
-pre, table, fieldset, hr {
-  // Single-direction margin declarations
-  // http://csswizardry.com/2012/06/single-direction-margin-declarations/
-  margin-bottom: #{$base-line-height}rem;
+.wrapper {
+  // width: $body-width;
+  // margin: 0 auto;
+  @include outer-container;
+}
+
+// Allow JS to detect media queries
+// source: http://adactio.com/journal/5429/
+@media all and (min-width: 45em) {
+  body:after {
+      content: 'widescreen';
+      display: none;
+  }
 }

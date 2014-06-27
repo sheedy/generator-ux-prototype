@@ -1,3 +1,5 @@
+// Mixins only
+
 @mixin vrythm($size, $margin-adjust: $base-line-height) {
   // Scale is an integer between 0 and x and used with modular-scale
   font-size: $size + px;
@@ -28,15 +30,14 @@
 
 @mixin type-scale($scale, $base, $value, $measure:"") {
   // If 'rem' is used as a $value then provide a px fallback.
-  // @debug "vars " + $scale + " , " + $base + " , " + $value + " , ";
   @if $value == rem {
     font-size: $scale#{px};
   }
   font-size: context-calc($scale, $base, $value);
-  // @if $measure != "" {
-  //   // margin-bottom: measure-margin($scale, $measure, $value);
-  //   margin-bottom: 0;
-  // }
+  @if $measure != "" {
+    // margin-bottom: measure-margin($scale, $measure, $value);
+    margin-bottom: 0;
+  }
 }
 
 @mixin font-smooth($type) {
@@ -70,9 +71,9 @@
     $old-moz: ();
     // Add each listed feature to the standard, new and old Mozilla values
     @each $feature in $feature-list {
-      $standard: append($standard, '#{$feature}', comma);
-      $new-moz: append($new-moz, '#{$feature}' 1, comma);
-      $old-moz: append($old-moz, '#{$feature}=1', comma);
+      $standard: append( $standard, '#{$feature}', comma );
+      $new-moz: append( $new-moz, '#{$feature}' 1, comma );
+      $old-moz: append( $old-moz, '#{$feature}=1', comma );
     }
     // Finally, print out the prefixed and non-prefixed code for all of the listed features
     // Syntax from http://stackoverflow.com/questions/15160897/font-feature-settings-what-is-the-correct-syntax

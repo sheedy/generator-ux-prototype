@@ -1,0 +1,58 @@
+{
+
+	"dropdown2": {
+		"info": {
+			"title": "select",
+			"description": "A dropdown menu for displaying multiple options to choose from.",
+			"name": "genders"
+		},
+		"data": {
+			"first": "his",
+			"second": "hers"
+		},
+		"css": {
+			"select": "src/css/base/forms/_select.scss",
+			"multiselect": "src/css/base/forms/_multiselect-box.scss"
+		}
+	},
+
+	"1": {
+
+		"2": {
+
+			"lorem-ipsum": {
+
+				"other": [
+					{ "name": "John" },
+					{ "name": "Bob" },
+					{ "name": "Jim" }
+				],
+
+				"other-2": "",
+				"dates": [
+					{
+						"index": "day1",
+						"lateday-slots": [
+							{
+								"index": "slot7",
+								"time": "4:00 PM–5:00 PM",
+								"status": "available"
+							},
+
+							{
+								"index": "slot8",
+								"time": "5:00 PM–6:00 PM",
+								"status": "available"
+							}
+						]
+					}
+				],
+
+				"location": ""
+			}
+
+		}
+
+	}
+
+}

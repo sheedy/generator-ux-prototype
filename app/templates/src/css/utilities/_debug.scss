@@ -1,0 +1,70 @@
+// NOTE: Nothing imported in this file should ever output actual code. It should
+// only import things like variables and mixins.
+//
+// ==================================
+//           Debugging
+// ==================================
+
+
+// ==========================================================================
+// Variables
+// ==========================================================================
+
+$debug:                          false;
+$debug-baseline:                 true;
+$debug-baseline-type:            col-stroke; // stroke | stripe | col-stroke
+$debug-baseline-stripe-color:    rgba(188, 238, 255, 0.5);
+$debug-baseline-stroke-color:    rgba(56,255,255, 0.8);
+$debug-baseline-stroke-width:    0.05em;
+$debug-baseline-stripe-width:    50%;
+$debug-baseline-offset:          0; // for fine tuning alignment adjustments
+$debug-column-color:             rgba(200, 0, 0, 0.2);
+
+// Grid (specific to Bourbon Neat)
+$visual-grid:                    true;
+$visual-grid-color:              cyan;
+$visual-grid-index:              back;
+$visual-grid-opacity:            0.5;
+
+
+
+
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+@import "utilities/mixins-debug";
+
+
+
+
+// ==========================================================================
+// CSS
+// ==========================================================================
+
+@if ($debug == true) {
+
+	// debug
+	@if $debug-baseline-type {
+	  @include debug-baseline($debug-baseline-type);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		background-color: rgba(255,0,0,0.2);
+	}
+
+	// http://jackosborne.com/articles/using-media-queries-to-check-your-designs-in-the-browser/
+	@media screen and (max-width: 1200px) {
+		// .wrapper { opacity: 0.4; }
+		// body { background: url('mock-up.png') no-repeat center top; }
+	}
+
+}
+
+
+

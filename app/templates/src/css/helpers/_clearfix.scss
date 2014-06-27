@@ -1,0 +1,23 @@
+/*
+* Clearfix
+* ------------------------------------------------------------------------------
+*
+*/
+
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+
+.clearfix:after {
+  clear:both;
+}
+
+// For IE8 and above
+// http://css-tricks.com/snippets/css/clear-fix/
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}

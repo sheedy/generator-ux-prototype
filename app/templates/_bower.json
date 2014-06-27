@@ -11,6 +11,7 @@
     "neat": "~1.6.0",
     "bourbon": "~3.1.8",<% } %><% if (incNormalizeScss) { %>
     "normalize-scss": "~3.0.1",<% } %>
+    "colors": ">=0.2.0",
     "jquery": "~1.9.0"
   }
 }

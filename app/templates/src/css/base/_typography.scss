@@ -1,51 +1,138 @@
+/*
+* Typography
+* ------------------------------------------------------------------------------
+*
+*/
+
+// $Placeholder $Wordwrap
+// -------------------------------------//
+// Silent Sass Classes - A.K.A Placeholders
+//
+// normal: Indicates that lines may only break at normal word break points.
+// break-word : Indicates that normally unbreakable words may be broken at
+// arbitrary points if there are no otherwise acceptable break points in the line.
+
+%breakword {
+  word-wrap: break-word;
+}
+
+%normal-wrap {
+  word-wrap: normal;
+}
+
+%inherit-wrap {
+  word-wrap: auto;
+}
+
+// $Styles $Headings
+// -------------------------------------//
+
+// Extend included classes on any element of your
+// choosing for adjusting type based on the scale
+// provided.
+
+// For example:
+
+// <h6 class="giga">Awesome Headline</h6>
+// <p class="tera">a story about a dude</p>
+
+// styles for all headings, in the style of @csswizardry
 %hN {
-  margin: 0;
-  font-weight: $font-weight;
+  text-rendering: optimizeLegibility; // voodoo to enable ligatures and kerning
   // margin: 0 0 ($base-line-height * 1) + rem 0;
+  margin: 0;
 }
 
-h1,
-.h1 {
+// Multi-dimensional array, where:
+// the first value is the name of the class
+// and the second value is the variable for the size
+$size-list: tera $tera, giga $giga, mega $mega, alpha $alpha, beta $beta, gamma $gamma, delta $delta, epsilon $epsilon, zeta $zeta;
+
+// Sass loop to associate h1-h6 tags with their appropriate greek
+// heading based on a modular scale.
+// for each size in the scale, create a class
+@each $size-item in $size-list {
+  .#{nth($size-item, 1)} {
+    // @include type-scale(nth($size, 2), $font-size-unitless, '#{$type-scale-unit-value}', $measure);
+    @include ms-and-vrythm(nth($size-item, 2));
+  }
+}
+
+// associate h1-h6 tags with their appropriate greek heading
+h1, .h1 {
+  @extend .alpha;
   @extend %hN;
-  font-size: ms(5);
 }
 
-h2,
-.h2 {
+h2, .h2 {
+  @extend .beta;
   @extend %hN;
-  font-size: ms(4);
 }
 
-h3,
-.h3 {
+h3, .h3 {
+  @extend .gamma;
   @extend %hN;
-  font-size: ms(3);
 }
 
-h4,
-.h4 {
+h4, .h4 {
+  @extend .delta;
   @extend %hN;
-  font-size: ms(2);
 }
 
-h5,
-.h5 {
+h5, .h5 {
+  @extend .epsilon;
   @extend %hN;
-  font-size: ms(1);
 }
 
-h6,
-.h6 {
+h6, .h6 {
+  @extend .zeta;
   @extend %hN;
-  font-size: ms(-1);
 }
 
-p{
+p {
   margin: 0 0 #{$base-line-height}rem 0;
+  text-rendering: optimizeLegibility;
+  // Kerning for OTF http://blog.typekit.com/2014/02/05/kerning-on-the-web/
+  @include font-feature-settings(kern);
+
+  code {
+    padding: $base-line-height/6 + rem $base-line-height/3 + rem;
+    margin: 0 $base-line-height/6 + rem;
+    border: 1px solid lighten($mid-grey, 50);
+    background-color: lighten($grey, 75);
+  }
+}
+
+a {
+
+}
+
+sub {
+
+}
+
+small {
+
+}
+
+em {
+
 }
 
 strong {
   font-weight: bold;
+}
+
+blockquote {
+
+}
+
+pre {
+  padding: $base-line-height/2 + rem 16px;
+  background-color: $mid-grey;
+  color: $white;
+  overflow: auto;
+  margin: $base-line-height + rem 0;
 }
 
 /*
@@ -57,9 +144,5 @@ button,
 input,
 select,
 textarea {
-  font-family: $font-family;
-}
-
-.text-centred {
-  text-align: center;
+  font-family: sans-serif;
 }
