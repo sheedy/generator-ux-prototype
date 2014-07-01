@@ -20,7 +20,10 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "prototype",
+    "ux",
+    "ux-prototype"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",

@@ -11,14 +11,6 @@ Go from sketch to wireframe to prototype with this front-end development and des
 > — <cite>[Stephen Hay](http://www.the-haystack.com/)</cite>
 
 
-## Project Goal
-
-Enable the *building* and *demonstration* of **tangible products** and reduce *describing* and *documenting* them, by facilitating "in-browser design" ("[deciding](https://the-pastry-box-project.net/dan-mall/2012-september-12) in the browser") using:
-
-- A modular/atomic system of reusable components/patterns
-- Flexible tools – opt-in over opt-out
-
-
 ## Features
 
 All features are optional, if you don't want to use one just comment it out in the appropriate ``tasks/task-name.js`` file. Everything is highly configurable and automated with [Grunt](http://gruntjs.com/).
@@ -42,36 +34,10 @@ The Sass/CSS adheres somewhat closely to the following guidelines (needs cleanup
 - [Sass Style Guide](http://css-tricks.com/sass-style-guide/)
 
 
-## Install
 
-*NOTE: This will eventually all be handled by a script (optional).*
+#### Growl Notifications
 
-
-If you are unfamiliar with terms like homebrew, npm, ruby and bundler or are having difficulty with the instructions below, read the [full install instructions](docs/Install.md).
-
-If you already have node installed, read on.
-
-#### SASS, Compass and Bundler
-
-```
-gem install sass compass bundler
-```
-
-#### Grunt & Bower
-
-```
-npm install -g grunt grunt-cli bower
-```
-
-#### Dependencies
-
-```
-npm install && bower install && bundle install
-```
-
-#### Growl
-
-[growlnotify](http://growl.info/downloads#generaldownloads)
+If you would like growl notifications to function, you will need to install [growlnotify](http://growl.info/downloads#generaldownloads)
 
 
 ## How to use
@@ -103,20 +69,3 @@ grunt build
 [Assemble docs](http://assemble.io/docs/)
 
 Most page and directory relatred settings are in `tasks/options/assemble.js`.
-
-## Alternatives
-
-- [generator-style-prototype](https://github.com/Team-Sass/generator-style-prototype)
-- [grunt-frontend-workflow](https://github.com/akikoo/grunt-frontend-workflow)
-
-## Author
-
-### Michael Sheedy
-
-- [https://twitter.com/msheedy](https://twitter.com/msheedy)
-- [http://www.michaelsheedy.com/](http://www.michaelsheedy.com/)
-- [http://www.myplanet.io/](http://www.myplanet.io/)
-
-## Credit
-
-Matt Bailey's [bones generator](https://github.com/matt-bailey/generator-bones) and his [blog posts on using Grunt](http://www.gpmd.co.uk/blog/front-end-process-flat-builds-and-automation-part-1-introduction/) – the seed that started this project.

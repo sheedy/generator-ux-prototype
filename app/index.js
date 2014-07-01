@@ -14,6 +14,7 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
     this.on('end', function () {
       if (!this.options['skip-install']) {
         this.installDependencies();
+        this.spawnCommand('bundle', ['install']);
       }
     });
 
@@ -60,18 +61,18 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
       {
         type: 'checkbox',
         name: 'features',
-        message: 'Select which packages you want to install (up/down keys and spacebar)',
+        message: 'Select which packages you want to install (up/down keys and spacebar). If you want more, just run `bower install NAME_OF_WHAT_YOU_WANT --save-dev`.',
         choices: [
           {
             name: 'Modernizr',
             value: 'incModernizr',
             checked: true
           },
-          {
-            name: 'Modular Scale',
-            value: 'incModularScale',
-            checked: false
-          },
+          // {
+          //   name: 'Modular Scale',
+          //   value: 'incModularScale',
+          //   checked: false
+          // },
           {
             name: 'animate.css',
             value: 'incAnimateCss',
@@ -87,11 +88,11 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
             value: 'incLetteringJs',
             checked: false
           },
-          {
-            name: 'Neat Grid (Bourbon)',
-            value: 'incNeat',
-            checked: false
-          },
+          // {
+          //   name: 'Neat Grid (Bourbon)',
+          //   value: 'incNeat',
+          //   checked: false
+          // },
           {
             name: 'Normalize.scss',
             value: 'incNormalizeScss',
@@ -118,12 +119,14 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
       }
 
       this.incModernizr             = hasFeature('incModernizr');
-      this.incModularScale          = hasFeature('incModularScale');
+      // this.incModularScale          = hasFeature('incModularScale');
+      this.incModularScale          = true;
       this.incNormalizeScss         = hasFeature('incNormalizeScss');
       this.incAnimateCss            = hasFeature('incAnimateCss');
       this.incFitText               = hasFeature('incFitText');
       this.incLetteringJs           = hasFeature('incLetteringJs');
-      this.incNeat                  = hasFeature('incNeat');
+      // this.incNeat                  = hasFeature('incNeat');
+      this.incNeat                  = true;
 
 
       done();
@@ -132,8 +135,8 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
   },
 
   app: function () {
-    this.mkdir('app');
-    this.mkdir('app/templates');
+    // this.mkdir('app');
+    // this.mkdir('app/templates');
 
     this.copy('_package.json', 'package.json');
     this.copy('_Gemfile', 'Gemfile');
@@ -141,18 +144,19 @@ var UxPrototypeGenerator = yeoman.generators.Base.extend({
     this.copy('bowerrc', '.bowerrc');
     this.copy('_bower.json', 'bower.json');
     this.copy('_README.md', 'README.md');
-
-    this.directory('tasks', 'tasks');
-    this.directory('src', 'src');
-    this.directory('config', 'config');
-  },
-
-  projectfiles: function () {
+    this.copy('_ux-prototype.sublime-project', this.projectSlug + '--ux-prototype.sublime-project');
     this.copy('editorconfig', '.editorconfig');
     this.copy('jshintrc', '.jshintrc');
     this.copy('gitignore', '.gitignore');
     this.copy('ruby-version', '.ruby-version');
     this.copy('scss-lint.yml', '.scss-lint.yml');
+
+  },
+
+  projectfiles: function () {
+    this.directory('tasks', 'tasks');
+    this.directory('src', 'src');
+    this.directory('config', 'config');
   }
 });
 

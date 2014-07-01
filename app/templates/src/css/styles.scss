@@ -2,8 +2,8 @@
 
 // Variables
 //------------------------------------------------------------------------------
-
-@import "modular-scale/stylesheets/modular-scale";
+<% if (incModularScale) { %>
+@import "modular-scale/stylesheets/modular-scale";<% } %>
 @import "utilities/variables";
 
 
@@ -11,18 +11,16 @@
 
 // External dependencies (sourced from 'src/bower_components')
 //------------------------------------------------------------------------------
-
+<% if (incNeat) { %>
 // Bourbon http://bourbon.io/
 @import "bourbon/app/assets/stylesheets/bourbon";
 // Bourbon Neat (grid) http://neat.bourbon.io/
 @import "neat/app/assets/stylesheets/neat";
-@import "neat/app/assets/stylesheets/neat-helpers";
+@import "neat/app/assets/stylesheets/neat-helpers";<% } %>
 
-// Susy (grid)
-// @import "susy"; // requires compass
-
+<% if (incNormalizeScss) { %>
 // Normalize
-@import "normalize-scss/normalize";
+@import "normalize-scss/normalize";<% } %>
 
 
 

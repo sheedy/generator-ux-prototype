@@ -7,8 +7,8 @@
 * NOT for production use
 *
 **/
-
-@import "modular-scale/stylesheets/modular-scale";
+<% if (incModularScale) { %>
+@import "modular-scale/stylesheets/modular-scale";<% } %>
 
 // Variables
 //------------------------------------------------------------------------------
