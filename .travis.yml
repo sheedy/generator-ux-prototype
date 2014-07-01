@@ -10,6 +10,5 @@ deploy:
   api_key:
     secure: fTh80fpZXrUxRA9kvI6F9YWCZ4sXdbw/9EaDRL4Evb44SeInSsVaj5CbYj/T/Q6vZTdoCKXV244nqJCG2ayWYy83qrYPRj51Iyn/bWD8MEYZXP2Hg3Bjp9tdfeDG1G6dH6e9UB8B7HylYG80wpMSKGX4SP4piR0NKSLAI7/zLVw=
   on:
-    tags: true
-    repo: sheedy/generator-ux-prototype
+    # tags: true
     branch: master
