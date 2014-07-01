@@ -12,3 +12,4 @@ deploy:
   on:
     tags: true
     repo: sheedy/generator-ux-prototype
+    branch: master
