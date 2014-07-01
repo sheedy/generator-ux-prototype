@@ -1,7 +1,14 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-ux-prototype' ]; then cd .. && eval "mv $currentfolder generator-ux-prototype" && cd generator-ux-prototype; fi
-
+- currentfolder=${PWD##*/}
+- if [ "$currentfolder" != 'generator-ux-prototype' ]; then cd .. && eval "mv $currentfolder generator-ux-prototype" && cd generator-ux-prototype; fi
+deploy:
+  provider: npm
+  email: git@michaelsheedy.com
+  api_key:
+    secure: fTh80fpZXrUxRA9kvI6F9YWCZ4sXdbw/9EaDRL4Evb44SeInSsVaj5CbYj/T/Q6vZTdoCKXV244nqJCG2ayWYy83qrYPRj51Iyn/bWD8MEYZXP2Hg3Bjp9tdfeDG1G6dH6e9UB8B7HylYG80wpMSKGX4SP4piR0NKSLAI7/zLVw=
+  on:
+    tags: true
+    repo: sheedy/generator-ux-prototype

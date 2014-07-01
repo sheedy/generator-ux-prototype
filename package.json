@@ -1,14 +1,21 @@
 {
   "name": "generator-ux-prototype",
-  "version": "0.0.2",
-  "description": "Yeoman generator",
+  "version": "0.0.3",
+  "description": "Yeoman generator for UX prototypes",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "sheedy/generator-ux-prototype",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sheedy/generator-ux-prototype.git"
+  },
   "author": {
     "name": "Michael Sheedy",
     "email": "git@michaelsheedy.com",
     "url": "https://github.com/sheedy"
+  },
+  "homepage": "https://github.com/sheedy/generator-ux-prototype",
+  "bugs": {
+    "url": "https://github.com/sheedy/generator-ux-prototype/issues"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -17,19 +24,24 @@
     "test": "mocha"
   },
   "files": [
-    "app"
+    "app",
+    "page"
   ],
   "keywords": [
     "yeoman-generator",
     "prototype",
     "ux",
-    "ux-prototype"
+    "ux-prototype",
+    "app",
+    "front-end",
+    "design-in-browser"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",
     "chalk": "~0.4.0",
     "yosay": "^0.1.0",
-    "execSync": "~1.0.1-pre"
+    "execSync": "~1.0.1-pre",
+    "underscore.string": "~2.3"
   },
   "devDependencies": {
     "mocha": "*",
